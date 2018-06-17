@@ -1,18 +1,16 @@
 local Take L in
-   fun {Take N XS}
+   fun {Take XS N}
       if N =< 0 then nil
 	 else
-      case XS of
-	 H|T then
-	 H | {Take (N-1) T}
-      else nil
+	 case XS of
+	    H|T then
+	    H | {Take T (N-1)}
+	 else
+	    nil
       end
       end
       
    end
    L = [2 3 1]
-   {Browse 'Length: '#{Take (0-5) L}}
+   {Browse 'Result: '#{Take L 2}}
 end
-
-
-      

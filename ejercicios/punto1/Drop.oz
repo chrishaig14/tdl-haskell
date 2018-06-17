@@ -1,17 +1,18 @@
 local Drop L in
-   fun {Drop N XS}
+   fun {Drop XS N}
       if N =< 0 then XS
 	 else
       case XS of
 	 H|T then
-	 {Drop (N-1) T}
+	 {Drop T (N-1)}
       else nil
       end
       end
       
    end
    L = [10 9 8 7 6 5 4 3 2 1]
-   {Browse 'Length: '#{Drop (1) L}}
+   %L = nil
+   {Browse 'Length: '#{Drop L 5}}
 end
 
 

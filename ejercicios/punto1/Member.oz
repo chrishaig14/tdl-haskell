@@ -1,22 +1,21 @@
 local Member L in
-   fun {Member X XS}
+   fun {Member XS Y}
       case XS of
 	 H|T then
-	 
-	 if H == X then
+	 if H == Y then
 	    true
 	 else
-	    {Member X T}
+	    {Member T Y}
 	 end
-	 
       else
 	 false
       end
    end
    
    L = nil
+   %L = [1 2 3 4 5 6 7 8 9 10]
    
-   {Browse 'Length: '#{Member 177 L}}
+   {Browse 'Length: '#{Member L 2}}
 end
 
 
