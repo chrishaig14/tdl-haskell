@@ -1,0 +1,11 @@
+1. proc {P X Y} local Z in {Q Z U} end end
+
+Referencias externas: [Q, U]
+
+2. proc {P X Y} local Z in {Q Z Y} end end
+
+Referencias externas: [Q]
+
+3. proc {P X Y} local Z in {P Z Y} end end
+
+Referencias externas: [-]
