@@ -1,4 +1,4 @@
-local Dict NewDict Put Get Domain D1 D2 D3 D4 D5 D6 A1 A2 A3 in
+local NewDict Put Get GetAllPairs Comp Domain AddAll DictCF1 DictCF2 L in
    fun {NewDict}
       empty()
    end
@@ -32,20 +32,56 @@ local Dict NewDict Put Get Domain D1 D2 D3 D4 D5 D6 A1 A2 A3 in
 	    
 	 end
       end
-      
+   end
+   fun {Comp A B}
+      % devuelve true si A va antes que B, A/B = pair(k:letra v:frec). false si no
+      if A.v < B.v then true else
+	 if A.v > B.v then false else
+	    if A.k < B.k then true else
+	       false
+	    end
+	 end
+      end
+   end
+   fun {GetAllPairs Dict}
+      % devuelve todos los pares clave-valor del diccionario como
+      % pair(k:clave v:valor)
+      case Dict of
+	 empty then
+	 nil
+      [] node(l:L k:K v:V r:R) then
+	 {List.append {GetAllPairs L} (pair(k:K v:V)|{GetAllPairs R})}
+      end
    end
    
+   fun {Domain Dict}
+      local Pairs in
+	 Pairs = {GetAllPairs Dict}
+	 {List.sort Pairs Comp}
+      end
+   end
+
+   fun {AddAll L DictChar}
+      % agrega todas la letras al diccionario de char -> frec
+      % va actualizando las frecuencias
+      case L of
+	 H|T then
+	 local D C Aux F in
+	    % convierto a char
+	    C = {Char.toAtom H}
+	    Aux = {Get DictChar C}
+	    % actualizo la frecuencia
+	    F = if Aux == nothing then 0 else Aux end
+	    D = {Put DictChar C (F+1)}
+	    {AddAll T D}
+	 end
+      else
+	 DictChar
+      end
+   end
    
-   D1 = {NewDict}
-   {Browse D1}
-   D2 = {Put D1 'Christian' 24}
-   {Browse D2}
-   D3 = {Put D2 'Alex' 22}
-   {Browse D3}
-   D4 = {Put D3 'Christian' 25}
-   D5 = {Put D4 'Evelyn' 17}
-   {Browse D5}
-   {Browse {Get D5 'Christian'}}
-   {Browse {Get D5 'Evelyn'}}
-   {Browse {Get D5 'Juan'}}
+   L = "cccaaeefdfefefafdbcbcbcbcffcdbcbfgcbcfdcefagbcggfgggfbdcefaebbf"
+   DictCF1 = {NewDict}
+   DictCF2 = {AddAll L DictCF1}
+   {Browse {Domain DictCF2}}
 end

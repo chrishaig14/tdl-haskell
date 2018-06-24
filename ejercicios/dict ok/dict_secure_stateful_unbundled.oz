@@ -1,4 +1,4 @@
-local Dict D1 D2 D3 NewDict Put Get NewWrapper in
+local DictCF L AddAll Comp GetAllPairs  NewDict Put Get Domain NewWrapper in
    local Wrap Unwrap in
       proc {NewWrapper ?Wrap ?Unwrap}
 	 Key={NewName}
@@ -52,13 +52,67 @@ local Dict D1 D2 D3 NewDict Put Get NewWrapper in
 	    end
 	 end
       end
+      fun {GetAllPairs C}
+% devuelve todos los pares clave-valor del diccionario como
+% pair(k:clave v:valor)
+	 local D in
+	    D = {Unwrap @C}
+	    case D of
+	       empty then
+	       nil
+	    [] node(l:L k:K v:V r:R) then
+	       {List.append {GetAllPairs L} (pair(k:K v:V)|{GetAllPairs R})}
+	    end
+	 end
+      end    
+   end
+
+
+   	
+   fun {Comp A B}
+      % k: letra, v:frecuencia
+      % la frec(A) < frec(B), A va antes que B
+      if A.v < B.v then true else
+	 % la frec(A) > frec(B), A va después que B
+	 if A.v > B.v then false else
+	    % frec(A) = frec(B), si letra(A) < letra(B), A va antes que B
+	    if A.k < B.k then true else
+	       % si letra(A) > letra(B), A va después que B
+	       false
+	    end
+	 end
+      end
    end
    
-   D1 = {NewDict}
-   {Browse D1}
-   {Put D1 'Christian' 24}
-   {Put D1 'Alex' 22}
-   {Browse {Get D1 'Christian'}}
-   {Browse {Get D1 'Alex'}}
-   {Browse {Get D1 'Juan'}}
+   fun {Domain Dict}
+      local Pairs in
+	 Pairs = {GetAllPairs Dict}
+	 {List.sort Pairs Comp}
+      end
+   end
+
+   proc {AddAll L DictChar}
+      % agrega todas la letras al diccionario de char -> frec
+      % va actualizando las frecuencias
+      case L of
+	 H|T then
+	 local C Aux F in
+	    % convierto a char
+	    C = {Char.toAtom H}
+	    Aux = {Get DictChar C}
+	    % actualizo la frecuencia
+	    F = if Aux == nothing then 0 else Aux end
+	    {Put DictChar C (F+1)}
+	    {AddAll T DictChar}
+	 end
+      else
+	 skip
+      end
+   end
+   
+   L = "cccaaeefdfefefafdbcbcbcbcffcdbcbfgcbcfdcefagbcggfgggfbdcefaebbf"
+   DictCF = {NewDict}
+   {AddAll L DictCF}
+   {Browse {Domain DictCF}}
+   
 end
