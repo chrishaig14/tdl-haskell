@@ -4,7 +4,7 @@
 	```oz
 	proc {P X Y} local Z in {Q Z U} end end
 	```
-	Referencias externas: [Q, U]`.
+	Referencias externas: [Q, U].
 2.
 	```oz
 	proc {P X Y} local Z in {Q Z Y} end end
