@@ -5,7 +5,7 @@ En Haskell, por ejemplo, todas las funciones que, en principio necesitan mas de 
 Entonces, al aplicar currying, si tenemos una funcion que recibe dos parametros y devuelve otro, en realidad lo que tenemos es una funcion que recibe un parametro, y devuelve otra funcion que recibe un parametro y, finalmente, devuelve el resultado.
 Gracias a esto, podemos utilizar funciones con menos parametros de los que recibe, y generar funciones evaluadas parcialmente.
 
-Ilustramos este concepto con un ejemplo sencillo en haskell, en el cual generamos una funcion MultTHree que necesita tres parametros numericos y devuelve la multiplicacion de los tres.
+Ilustramos este concepto con un ejemplo sencillo en haskell, en el cual generamos una funcion `multThreeree que necesita tres parametros numericos y devuelve la multiplicacion de los tres.
 
 ```haskell
 multThree :: (Num a) => a -> a -> a -> a
@@ -16,12 +16,14 @@ multThree x y z = x * y * z
 135
 ```
 
-Gracias al Currying podemos llamar a la funcion multThree y generar otra funcion multTwoWithNine que tome dos parametros y devuelve la multiplicacion de ellos por 9.
-
-let multTwoWithNine = multThree 9
-
+Gracias al Currying podemos llamar a la funcion `multThree` y generar otra funcion `multTwoWithNine` que tome dos parametros y devuelve la multiplicacion de ellos por 9.
+```haskell
+multTwoWithNine = multThree 9
+```
+```haskell
 > multTwoWithNine 2 3 
 54
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzA3MjY0NjhdfQ==
+eyJoaXN0b3J5IjpbMTM4ODMwNjI4OV19
 -->
