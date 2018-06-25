@@ -15,6 +15,3 @@
 	proc {P X Y} local Z in {P Z Y} end end
 	```
 	Referencias externas: [-]
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDY5NDA0NzddfQ==
--->
