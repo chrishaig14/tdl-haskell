@@ -1,4 +1,4 @@
-local NewDict Put Get GetAllPairs Comp Domain AddAll DictCF1 DictCF2 L in
+local NewDict Put Get GetAllPairs Comp Domain AddAll DictCF1 DictCF2 L CountAndSort in
    fun {NewDict}
       empty()
    end
@@ -80,8 +80,13 @@ local NewDict Put Get GetAllPairs Comp Domain AddAll DictCF1 DictCF2 L in
       end
    end
    
+
+   proc {CountAndSort L}
+      DictCF1 = {NewDict}
+      DictCF2 = {AddAll L DictCF1}
+      {Browse {Domain DictCF2}}
+   end
+   
    L = "cccaaeefdfefefafdbcbcbcbcffcdbcbfgcbcfdcefagbcggfgggfbdcefaebbf"
-   DictCF1 = {NewDict}
-   DictCF2 = {AddAll L DictCF1}
-   {Browse {Domain DictCF2}}
+   {CountAndSort L}
 end

@@ -1,4 +1,4 @@
-local NewDict Comp Domain AddAll DictCF L in
+local NewDict Comp Domain AddAll DictCF L CountAndSort in
    fun {NewDict}
       C = {NewCell empty()}
       proc {Put Key Value}
@@ -82,8 +82,15 @@ local NewDict Comp Domain AddAll DictCF L in
    end
 
 
+   
+
+   proc  {CountAndSort L}
+   
+      DictCF = {NewDict}
+      {AddAll L DictCF}
+      {Browse {Domain DictCF}}
+   end
+
    L = "cccaaeefdfefefafdbcbcbcbcffcdbcbfgcbcfdcefagbcggfgggfbdcefaebbf"
-   DictCF = {NewDict}
-   {AddAll L DictCF}
-   {Browse {Domain DictCF}}
+   {CountAndSort L}
 end

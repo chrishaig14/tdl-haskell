@@ -1,4 +1,4 @@
-local NewDict DictObject L DictCF1 DictCF2 AddAll Domain Comp in
+local NewDict DictObject L DictCF1 DictCF2 AddAll Domain Comp CountAndSort in
    fun {DictObject Dict}
       local Put Get GetAllPairs in
 	 fun {Put Key Value}
@@ -61,11 +61,11 @@ local NewDict DictObject L DictCF1 DictCF2 AddAll Domain Comp in
    end
    
    fun {Domain Dict}
-	    local Pairs in
-	       Pairs = {Dict.getAllPairs}
-	       {List.sort Pairs Comp}
-	    end
-	 end
+      local Pairs in
+	 Pairs = {Dict.getAllPairs}
+	 {List.sort Pairs Comp}
+      end
+   end
 
    fun {AddAll L DictChar}
       % agrega todas la letras al diccionario de char -> frec
@@ -86,8 +86,13 @@ local NewDict DictObject L DictCF1 DictCF2 AddAll Domain Comp in
       end
    end
 
+
+   proc {CountAndSort L}
+      DictCF1 = {NewDict}
+      DictCF2 = {AddAll L DictCF1}
+      {Browse {Domain DictCF2}}
+   end
+   
    L = "cccaaeefdfefefafdbcbcbcbcffcdbcbfgcbcfdcefagbcggfgggfbdcefaebbf"
-   DictCF1 = {NewDict}
-   DictCF2 = {AddAll L DictCF1}
-   {Browse {Domain DictCF2}}
+   {CountAndSort L}
 end

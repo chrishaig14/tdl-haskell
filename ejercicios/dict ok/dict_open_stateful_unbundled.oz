@@ -1,4 +1,4 @@
-local NewDict Put Get GetAllPairs AddAll Comp Domain DictCF L in
+local NewDict Put Get GetAllPairs AddAll Comp Domain DictCF L CountAndSort in
    fun {NewDict}
       {NewCell empty()}
    end
@@ -86,8 +86,13 @@ local NewDict Put Get GetAllPairs AddAll Comp Domain DictCF L in
       end
    end
    
+   proc {CountAndSort L}
+      DictCF = {NewDict}
+      {AddAll L DictCF}
+      {Browse {Domain DictCF}}
+   end
+
    L = "cccaaeefdfefefafdbcbcbcbcffcdbcbfgcbcfdcefagbcggfgggfbdcefaebbf"
-   DictCF = {NewDict}
-   {AddAll L DictCF}
-   {Browse {Domain DictCF}}
+   {CountAndSort L}
+   
 end

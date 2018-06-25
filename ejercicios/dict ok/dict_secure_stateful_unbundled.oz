@@ -1,4 +1,4 @@
-local DictCF L AddAll Comp GetAllPairs  NewDict Put Get Domain NewWrapper in
+local DictCF L AddAll Comp GetAllPairs  NewDict Put Get Domain NewWrapper CountAndSort in
    local Wrap Unwrap in
       proc {NewWrapper ?Wrap ?Unwrap}
 	 Key={NewName}
@@ -109,10 +109,15 @@ local DictCF L AddAll Comp GetAllPairs  NewDict Put Get Domain NewWrapper in
 	 skip
       end
    end
+
+   proc {CountAndSort L}
+      DictCF = {NewDict}
+      {AddAll L DictCF}
+      {Browse {Domain DictCF}}
+   end
    
+
    L = "cccaaeefdfefefafdbcbcbcbcffcdbcbfgcbcfdcefagbcggfgggfbdcefaebbf"
-   DictCF = {NewDict}
-   {AddAll L DictCF}
-   {Browse {Domain DictCF}}
+   {CountAndSort L}
    
 end
