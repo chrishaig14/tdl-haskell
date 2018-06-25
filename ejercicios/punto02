@@ -1,0 +1,20 @@
+# 2 Referencias externas
+
+1. 
+	```oz
+	proc {P X Y} local Z in {Q Z U} end end
+	```
+	Referencias externas: [Q, U]`.
+2.
+	```oz
+	proc {P X Y} local Z in {Q Z Y} end end
+	```
+	Referencias externas: [Q]
+3. 
+	```oz
+	proc {P X Y} local Z in {P Z Y} end end
+	```
+	Referencias externas: [-]
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEzMDY5NDA0NzddfQ==
+-->
