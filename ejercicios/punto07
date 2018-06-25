@@ -1,4 +1,4 @@
-Currying
+# 7 Currying
 
 Currying es el proceso de transformar una funcion que podria tomar muchos argumentos en otra que toma un solo argumento y devuelve una funcion siempre que aun le falten argumentos.
 En Haskell, por ejemplo, todas las funciones que, en principio necesitan mas de un parametro,. utilizan currying, ya que las funciones solo pueden recibir un unico parametro. 
@@ -7,12 +7,14 @@ Gracias a esto, podemos utilizar funciones con menos parametros de los que recib
 
 Ilustramos este concepto con un ejemplo sencillo en haskell, en el cual generamos una funcion MultTHree que necesita tres parametros numericos y devuelve la multiplicacion de los tres.
 
-
+```haskell
 multThree :: (Num a) => a -> a -> a -> a
 multThree x y z = x * y * z
-
+```
+```haskell
 > multThree 3 5 9
 135
+```
 
 Gracias al Currying podemos llamar a la funcion multThree y generar otra funcion multTwoWithNine que tome dos parametros y devuelve la multiplicacion de ellos por 9.
 
@@ -20,3 +22,6 @@ let multTwoWithNine = multThree 9
 
 > multTwoWithNine 2 3 
 54
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIxMzA3MjY0NjhdfQ==
+-->
