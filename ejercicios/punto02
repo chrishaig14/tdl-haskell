@@ -1,4 +1,6 @@
-1. proc {P X Y} local Z in {Q Z U} end end
+1. ```oz
+2. proc {P X Y} local Z in {Q Z U} end end
+```
 
 Referencias externas: [Q, U]
 
@@ -9,3 +11,6 @@ Referencias externas: [Q]
 3. proc {P X Y} local Z in {P Z Y} end end
 
 Referencias externas: [-]
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTMyOTQ5NDMxMV19
+-->
