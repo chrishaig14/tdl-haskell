@@ -24,6 +24,3 @@ multTwoWithNine = multThree 9
 > multTwoWithNine 2 3 
 54
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTMyNDU1XX0=
--->
