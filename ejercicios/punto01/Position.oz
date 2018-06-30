@@ -14,7 +14,7 @@ local Position L in
    
    L = [10 9 8 7 6 5 4 3 2 1]
    
-   {Browse 'Result: '#{Position L 2}}
+   {Browse {Position L 2}}
 end
 
 

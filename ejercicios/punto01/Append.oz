@@ -15,8 +15,8 @@ local Append L1 L2 in
    L2 = [1 2 3 4 5 6 7 8 9 10]
    %L1 = nil
    %L2 = nil
-   
-   {Browse 'Length: '#{Append L1 L2}}
+
+   {Browse {Append L1 L2}}
 end
 
 

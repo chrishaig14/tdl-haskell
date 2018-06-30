@@ -12,7 +12,7 @@ local Drop L in
    end
    L = [10 9 8 7 6 5 4 3 2 1]
    %L = nil
-   {Browse 'Length: '#{Drop L 5}}
+   {Browse {Drop L 5}}
 end
 
 
