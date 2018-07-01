@@ -1,4 +1,4 @@
-9.1
+	9.1
 
 local MyMap L Lout A B C mult in
 	MyMap = proc {$ Xs F R}
@@ -11,7 +11,12 @@ local MyMap L Lout A B C mult in
 		end	
 	end
 	L = [1 2 3 4]
-	mult = proc {$ X} X*X end
+	proc {mult X R}
+		local T in
+		 T= proc {$ Y} Y=X*X end
+		{ByNeed T Y}
+		end
+	end
 	{MyMap L mult Lout}
 	A = Lout.1
 	B = Lout.2
