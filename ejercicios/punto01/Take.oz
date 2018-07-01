@@ -12,5 +12,5 @@ local Take L in
       
    end
    L = [2 3 1]
-   {Browse 'Result: '#{Take L 2}}
+   {Browse {Take L 2}}
 end

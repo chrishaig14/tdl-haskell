@@ -8,7 +8,7 @@ local Length L in
    end
    L = [10 9 8 7 6 5 4 3 2 1]
    %L = nil
-   {Browse 'Length: '#{Length L}}
+   {Browse {Length L}}
 end
 
 

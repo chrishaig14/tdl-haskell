@@ -7,12 +7,12 @@ local Map L F in
       end
    end
    
-      L = [2 3 1]
-      fun {F X}
-	 X*X + 2
-      end
+   L = [5 4 3 2 1]
+   fun {F X}
+      X*X + 2
+   end
       
-   {Browse 'Length: '#{Map L F}}
+   {Browse {Map L F}}
 end
 
 

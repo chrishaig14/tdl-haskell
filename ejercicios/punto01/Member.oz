@@ -12,10 +12,10 @@ local Member L in
       end
    end
    
-   L = nil
-   %L = [1 2 3 4 5 6 7 8 9 10]
+   % L = nil
+   L = [1 2 3 4 5 6 7 8 9 10]
    
-   {Browse 'Length: '#{Member L 2}}
+   {Browse {Member L 2}}
 end
 
 
