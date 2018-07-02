@@ -1,31 +1,3 @@
-	9.1
+# 9.2 Evaluación perezosa - Reverse
 
-local MyMap L Lout A B C mult in
-	MyMap = proc {$ Xs F R}
-		local R2 in
-			case Xs of 
-				nil then R = nil
-				[] X|Xr then R = {F X}|{MyMap Xr F R2}
-		
-			end
-		end	
-	end
-	L = [1 2 3 4]
-	proc {mult X R}
-		local T in
-		 T= proc {$ Y} Y=X*X end
-		{ByNeed T Y}
-		end
-	end
-	{MyMap L mult Lout}
-	A = Lout.1
-	B = Lout.2
-	C = A + B
-	{Browse C}
-end
-
-9.2
-
-La diferencia esta en que la funcion Rev de Reverse2 es Lazy. Como la funcion es monolitica, no es necesario que Rev sea Lazy. Es decir, aunque se necesite solo el primer elemento, se deberan calcular todas las posiciones del array. Por lo cual, el resultado obtenido por las dos funciones es el mismo.
-En cuanto a la eficiencia, como las funciones Lazy generan threads, la funcion Reverse2 es menos eficiente.
-
+La diferencia está en que la función `Rev` de `Reverse2` es _lazy_. Como la función es monolítica (es decir, en este caso particular para invertir la lista, aunque se necesite sólo el primer elemento, se deberán calcular todas las posiciones de la lista) no es necesario que `Rev` sea lazy. El resultado obtenido por las dos funciones es el mismo, pero como las funciones lazy generan threads (en el fondo, _lazy_ se transforma en _ByNeed_ y esto lanza un thread cuando se requiere el valor), la funcion `Reverse2` es menos eficiente.
