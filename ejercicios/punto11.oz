@@ -1,4 +1,5 @@
 local NuevoReceptor NuevoFiltro R D Check in
+   % crea nuevo agente que recibe en Puerto e imprime el mje recibido
    proc {NuevoReceptor Puerto}
       local Recibir in
 	 proc {Recibir S}
@@ -11,6 +12,7 @@ local NuevoReceptor NuevoFiltro R D Check in
       end
    end
 
+   % crea un nuevo agente que recibe en Puerto, chequea con la función Check y si es aceptado, reenvía a Destino
    proc {NuevoFiltro Puerto Check Destino}
       local Recibir in
 	 proc {Recibir S}

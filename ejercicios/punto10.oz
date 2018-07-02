@@ -1,4 +1,5 @@
 local NuevoReceptor R in
+   % crea nuevo agente que recibe en Puerto e imprime el mje recibido
    proc {NuevoReceptor Puerto}
       local Recibir in
 	 proc {Recibir S}
